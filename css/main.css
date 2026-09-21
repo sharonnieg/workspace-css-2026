@@ -1,0 +1,25 @@
+/* 1 Global Variables
+    2 Layout
+*/
+
+/* ---- 1 Global Variables (CSS variables start with "--") ----*/
+:root{
+    --color-bg-body: #FFFF00;
+    --color-bg-section: hsl(115, 50%, 75%);
+    --color-font-body: black; 
+}
+
+/*  Practice */
+
+
+body{
+    background-color: var(--color-bg-body);
+    color: var(--color-bg-section);
+}
+
+p{
+    background-color: var(--color-font-body);
+    color: var(--color-bg-body);
+}
+
+/* */
