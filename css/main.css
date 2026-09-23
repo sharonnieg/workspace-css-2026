@@ -3,23 +3,49 @@
 */
 
 /* ---- 1 Global Variables (CSS variables start with "--") ----*/
-:root{
+:root {
     --color-bg-body: #FFFF00;
     --color-bg-section: hsl(115, 50%, 75%);
-    --color-font-body: black; 
+    --color-font-body: black;
+    --img-board: url('../img/water.webp');
 }
+
+#zen-explanation{--pos-top: 170px; --pos-left: 350px; --front-img: url(..img/newspaper2.jpg);}
+#zen-participation{--pos-top: 170px ; --pos-left: 350px ; --front-img: url(..img/newspaper2.jpg);}
 
 /*  Practice */
 
-
-body{
+body {
     background-color: var(--color-bg-body);
     color: var(--color-bg-section);
 }
 
-p{
-    background-color: var(--color-font-body);
-    color: var(--color-bg-body);
+/* . represents a class; page wrapper is a class */
+.page-wrapper {
+    /* Use global variable to set image as background */
+    background-image: var(--img-board);
+    position: fixed;
+    /* Adjust left, top, width, height, ensure board is in middle */
+    left: 30%;
+    width: 80%;
+    height: 100vh;
 }
 
-/* */
+/* ---- 2 Layout ---- */
+
+/* Relative Postion */
+
+abbr {
+    position: relative;
+    top: -10px;
+    font-size: 2em;
+}
+
+article{
+    position: absolute;
+    top: var(--pos-top);
+    left: var(--pos-left);
+    width: 300px ;
+    height: 40vh;
+}
+
