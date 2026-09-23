@@ -47,5 +47,32 @@ article{
     left: var(--pos-left);
     width: 300px ;
     height: 40vh;
+    overflow: hidden;
 }
 
+/* Hide the elements */
+footer, aside {
+    display: none;
+}
+
+/* Required: Web Font and Local Font */
+header h1 {
+    font-family: "Playwrite BE WAL Guides", cursive ;
+    font-size: 2em ;
+
+}
+ @font-face {
+    font-family: 'myFont';
+    src: url('../fonts/chunkfive.woff') format('woff'), url(../fonts/chunkfive.svg) format('svg');
+    font-weight: normal;
+    font-style: italic;
+ }
+
+ header h2 {
+    font-family: 'myFont', Arial, Helvetica, sans-serif;
+    font-size: 1.5 em ;
+ }
+
+ a {
+    text-transform: uppercase;
+ }
