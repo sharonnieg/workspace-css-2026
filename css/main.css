@@ -8,6 +8,11 @@
     --color-bg-section: hsl(115, 50%, 75%);
     --color-font-body: black;
     --img-board: url('../img/water.webp');
+    /*
+    --img-cardback: url('../img.water.webp');
+    --img-cardfront: url('../img/BACK.png');
+    --img-cardfront2: url('../img/BACK.png');
+    */
 }
 
 #zen-explanation{--pos-top: 170px; --pos-left: 350px; --front-img: url(..img/newspaper2.jpg);}
@@ -75,4 +80,11 @@ header h1 {
 
  a {
     text-transform: uppercase;
+ }
+
+ /* Display and Visibility */
+ #zen-partcipation h3 {
+    display: none;
+    /* visibiity: hidden; */
+    /* opacity: 1; */
  }
