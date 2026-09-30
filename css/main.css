@@ -4,24 +4,33 @@
 
 /* ---- 1 Global Variables (CSS variables start with "--") ----*/
 :root {
-    --color-bg-body: #FFFF00;
-    --color-bg-section: hsl(115, 50%, 75%);
+    --color-bg-body: #24d180;
+    --color-bg-gradient: linear-gradient(to top, #cf6666, #e7438d);
+    --color-bg-section: hsl(114, 72%, 23%);
     --color-font-body: black;
     --img-board: url('../img/water.webp');
-    /*
     --img-cardback: url('../img.water.webp');
+    /*
     --img-cardfront: url('../img/BACK.png');
     --img-cardfront2: url('../img/BACK.png');
     */
+    
 }
 
-#zen-explanation{--pos-top: 170px; --pos-left: 350px; --front-img: url(..img/newspaper2.jpg);}
-#zen-participation{--pos-top: 170px ; --pos-left: 350px ; --front-img: url(..img/newspaper2.jpg);}
+#zen-supporting{--pos-top: 150px; --pos-left:15px;}
+#zen-preamble{--pos-top: 350px; --pos-left:15px}
+#zen-explanation{--pos-top: 550px; --pos-left: 15px; --front-img: url(..img/newspaper2.jpg);}
+#zen-participation{--pos-top: 150px ; --pos-left: 350px ; --front-img: url(..img/newspaper2.jpg);}
+#zen-benefits{--pos-top: 350px; --pos-left: 350px;}
+#zen-requirements{--pos-top: 550px; --pos-left: 350px;}
+
 
 /*  Practice */
 
 body {
-    background-color: var(--color-bg-body);
+    background-image: var(--color-bg-gradient);
+    height: 100vh;
+    background-repeat: no-repeat;
     color: var(--color-bg-section);
 }
 
@@ -31,9 +40,9 @@ body {
     background-image: var(--img-board);
     position: fixed;
     /* Adjust left, top, width, height, ensure board is in middle */
-    left: 30%;
+    left: 10%;
     width: 80%;
-    height: 100vh;
+    height: 110vh;
 }
 
 /* ---- 2 Layout ---- */
@@ -46,13 +55,37 @@ abbr {
     font-size: 2em;
 }
 
-article{
+article {
     position: absolute;
     top: var(--pos-top);
     left: var(--pos-left);
+    /*transform: rotate(var(--tilt,30deg));*/
+    /*
+    background-image: var(--img-cardback);
+    background-repeat: no-repeat;
+    */
+    background-size: cover;
     width: 300px ;
-    height: 40vh;
+    height: 150px;
     overflow: hidden;
+    /* Element Model */
+    padding: 5px 10px 20px 8px;
+    border: 2px dotted white; /* change border radius to make card look nice */
+}
+
+article:hover {
+    background-image: var(--img-cardback) ;
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+/* Everything inside the block */
+article > {
+    opacity: 0;
+}
+
+article:active {
+
 }
 
 /* Hide the elements */
@@ -88,3 +121,18 @@ header h1 {
     /* visibiity: hidden; */
     /* opacity: 1; */
  }
+
+/* Selector Practice*/
+article h3::first-letter{
+    font-size: 2em;
+} 
+article:first-child{
+    text-shadow: 0.5em 0.1em 1em black;
+}
+p:nth-child(2n){
+    background-color: yellow;
+    box-shadow: -15px -15px 50px black;
+}
+aside ul{
+    list-style-image: url("../img/star.png");
+}
