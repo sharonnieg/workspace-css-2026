@@ -42,17 +42,34 @@ body {
     /* Adjust left, top, width, height, ensure board is in middle */
     left: 10%;
     width: 80%;
-    height: 110vh;
+    height: 100vh;
+    transform-origin: bottom center;
+    transform: perspective(800px) rotateX(20deg) ;
+    transform-style: preserve-3d;
+}
+
+.extra1{
+    /* Move under table to make frame */
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    width: 1050px;
+    height: 20px;
+    background-color: aqua;
 }
 
 /* ---- 2 Layout ---- */
 
 /* Relative Postion */
 
-abbr {
+header abbr {
     position: relative;
     top: -10px;
     font-size: 2em;
+}
+
+.intro, .supporting{
+
 }
 
 article {
@@ -80,13 +97,21 @@ article:hover {
 }
 
 /* Everything inside the block */
-article > {
+article > *{
     opacity: 0;
+    transition: opacity 3s;
 }
 
 article:active {
+    background-image: var(--front-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 50vh;
+    transform-origin: 500px 80vh;
 
 }
+
 
 /* Hide the elements */
 footer, aside {
@@ -135,4 +160,27 @@ p:nth-child(2n){
 }
 aside ul{
     list-style-image: url("../img/star.png");
+}
+
+/* Style Footer */
+footer {
+    position: fixed;
+    top: ; 
+    left: ;
+    width: auto;
+    display: flex; /* horizontal */
+    gap: ;
+    padding: 10px;
+    animation: horizontalmove 5s linear infinite;
+
+}
+
+footer a {
+    background-color: var();
+}
+
+@keyframes horizontalmove {
+    0%{transform: translateX(0);}
+    50%{transform: translateX(100%);}
+    100%{transform: translate;}
 }
