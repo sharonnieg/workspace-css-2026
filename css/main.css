@@ -1,22 +1,24 @@
-/* 1 Global Variables
+/* 
+    File to style index.html
+    1 Global Variables
     2 Layout
 */
 
 /* ---- 1 Global Variables (CSS variables start with "--") ----*/
 :root {
-    --color-bg-body: #24d180;
-    --color-bg-gradient: linear-gradient(to top, #cf6666, #e7438d);
-    --color-bg-section: hsl(114, 72%, 23%);
+    --color-bg-body: #e97451;
+    --color-bg-gradient: linear-gradient(to top, #8B0000, #834333);
+    --color-bg-section: hsl(30, 61%, 50%);
     --color-font-body: black;
+    --color-board-frame: hsl(36, 43%, 85%);
+    --color-top-bar: hsl(42, 27%, 47%);
     --img-board: url('../img/water.webp');
-    --img-cardback: url('../img.water.webp');
-    /*
-    --img-cardfront: url('../img/BACK.png');
-    --img-cardfront2: url('../img/BACK.png');
-    */
-    
+    --img-cardback: url('../img.BACK.png');
+    --img-cardfront: url('../img/Normal_bg.webp');
+    --img-cardfront2: url('../img/Pasisve_bg.webp');
 }
 
+/* Required: Place into right position */
 #zen-supporting{--pos-top: 150px; --pos-left:15px;}
 #zen-preamble{--pos-top: 350px; --pos-left:15px}
 #zen-explanation{--pos-top: 550px; --pos-left: 15px; --front-img: url(..img/newspaper2.jpg);}
@@ -24,28 +26,31 @@
 #zen-benefits{--pos-top: 350px; --pos-left: 350px;}
 #zen-requirements{--pos-top: 550px; --pos-left: 350px;}
 
-
-/*  Practice */
-
 body {
     background-image: var(--color-bg-gradient);
     height: 100vh;
     background-repeat: no-repeat;
-    color: var(--color-bg-section);
+    color: var(--color-font-body);
 }
+
+/* ---- 2 Layout ---- */
 
 /* . represents a class; page wrapper is a class */
 .page-wrapper {
     /* Use global variable to set image as background */
     background-image: var(--img-board);
     position: fixed;
-    /* Adjust left, top, width, height, ensure board is in middle */
+    /* Required: Adjust left, top, width, height, ensure board is in middle */
     left: 10%;
     width: 80%;
     height: 100vh;
     transform-origin: bottom center;
     transform: perspective(800px) rotateX(20deg) ;
     transform-style: preserve-3d;
+}
+
+.page-wrapper:hover {
+    
 }
 
 .extra1{
@@ -58,7 +63,7 @@ body {
     background-color: aqua;
 }
 
-/* ---- 2 Layout ---- */
+
 
 /* Relative Postion */
 
@@ -109,12 +114,12 @@ article:active {
     width: 300px;
     height: 50vh;
     transform-origin: 500px 80vh;
-
+    transform: rotateX(-30deg);
 }
 
 
 /* Hide the elements */
-footer, aside {
+aside {
     display: none;
 }
 
@@ -140,8 +145,9 @@ header h1 {
     text-transform: uppercase;
  }
 
- /* Display and Visibility */
- #zen-partcipation h3 {
+ /* Display and Visibility, Sibling Selector */
+ /* All p that are siblings of h3 will have text - transform: uppercase */
+h3 + p {
     display: none;
     /* visibiity: hidden; */
     /* opacity: 1; */
@@ -155,7 +161,7 @@ article:first-child{
     text-shadow: 0.5em 0.1em 1em black;
 }
 p:nth-child(2n){
-    background-color: yellow;
+    background-color: brown;
     box-shadow: -15px -15px 50px black;
 }
 aside ul{
@@ -165,22 +171,67 @@ aside ul{
 /* Style Footer */
 footer {
     position: fixed;
-    top: ; 
-    left: ;
+    top: 0; 
+    left: 0;
     width: auto;
     display: flex; /* horizontal */
-    gap: ;
+    gap: 8px ;
     padding: 10px;
     animation: horizontalmove 5s linear infinite;
 
 }
 
 footer a {
-    background-color: var();
+    background-color: var(--color-top-bar);
+    text-decoration: wavy underline;
 }
 
 @keyframes horizontalmove {
     0%{transform: translateX(0);}
     50%{transform: translateX(100%);}
-    100%{transform: translate;}
+    100%{transform: translateX(0);}
 }
+/* Grid Layout Practice
+div{
+  background-color:  hsla(200,50%,70%,0.3);
+}
+
+.wrapper {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 100px  repeat(2, 1fr) 100px;
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.one{
+  grid-column: 2/4;
+  grid-row: 2/4;
+}
+
+.two{
+  grid-column: 1/ 4;
+  grid-row: 1/2;
+}
+
+.three{
+  grid-column: 2/1;
+  grid-row: 2/4;
+}
+
+.four{
+  grid-column: 4/ 5;
+  grid-row: 1/3;
+}
+
+.five{
+  grid-column: 1/ 4;
+  grid-row: 4/5;
+}
+
+.six{
+  grid-column: 3/5;
+  grid-row: 3/5;
+}
+*/
+
