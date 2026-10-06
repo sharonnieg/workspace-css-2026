@@ -7,29 +7,69 @@
 /* ---- 1 Global Variables (CSS variables start with "--") ----*/
 :root {
     --color-bg-body: #e97451;
-    --color-bg-gradient: linear-gradient(to top, #8B0000, #834333);
+    --color-bg-gradient: linear-gradient(to bottom, #800000, #DAA06D);
     --color-bg-section: hsl(30, 61%, 50%);
     --color-font-body: black;
-    --color-board-frame: hsl(36, 43%, 85%);
+    --color-board-frame: hsl(15, 77%, 24%);
     --color-top-bar: hsl(42, 27%, 47%);
     --img-board: url('../img/water.webp');
     --img-cardback: url('../img.BACK.png');
-    --img-cardfront: url('../img/Normal_bg.webp');
+    --img-cardfront1: url('../img/Normal_bg.webp');
     --img-cardfront2: url('../img/Pasisve_bg.webp');
 }
 
 /* Required: Place into right position */
-#zen-supporting{--pos-top: 150px; --pos-left:15px;}
-#zen-preamble{--pos-top: 350px; --pos-left:15px}
-#zen-explanation{--pos-top: 550px; --pos-left: 15px; --front-img: url(..img/newspaper2.jpg);}
-#zen-participation{--pos-top: 150px ; --pos-left: 350px ; --front-img: url(..img/newspaper2.jpg);}
-#zen-benefits{--pos-top: 350px; --pos-left: 350px;}
-#zen-requirements{--pos-top: 550px; --pos-left: 350px;}
+#zen-explanation {
+    --pos-top: 250px;
+    --pos-left: 125px;
+    --tilt: -20deg;
+    --front-color: var(--img-cardfront1);
+    z-index: 10;
+}
+
+#zen-participation {
+    --pos-top: 470px;
+    --pos-left: 215px;
+    --tilt: -20deg;
+    --front-color: var(--img-cardfront1);
+    z-index: 10;
+}
+
+#zen-preamble {
+    --pos-top: 250px;
+    --pos-left: 400px;
+    --tilt: -20deg;
+    --front-color: var(--img-cardfront1);
+    z-index: 10;
+}
+
+#zen-benefits {
+    --pos-top: 470px;
+    --pos-left: 460px;
+    --tilt: -20deg;
+    --front-color: var(--img-cardfront1);
+    z-index: 10;
+}
+
+#zen-requirements {
+    --pos-top: 250px;
+    --pos-left: 675px;
+    --tilt: -20deg;
+    --front-color: var(--img-cardfront1);
+    z-index: 10;
+}
+
+#zen-summary {
+    --pos-top: 470px;
+    --pos-left: 750px;
+    --tilt: -20deg;
+    --front-color: var(--img-cardfront1);
+    z-index: 10;
+}
 
 body {
     background-image: var(--color-bg-gradient);
     height: 100vh;
-    background-repeat: no-repeat;
     color: var(--color-font-body);
 }
 
@@ -42,38 +82,42 @@ body {
     position: fixed;
     /* Required: Adjust left, top, width, height, ensure board is in middle */
     left: 10%;
-    width: 80%;
-    height: 100vh;
+    bottom: 20px;
+    width: 1000px;
+    height: 115vh;
+    border: 25px solid var(--color-board-frame);
     transform-origin: bottom center;
-    transform: perspective(800px) rotateX(20deg) ;
+    transform: perspective(850px) rotateX(30deg) translate(10px, 15px) scale(1);
     transform-style: preserve-3d;
+    animation: pictureAnimation 10s infinite;
+
 }
 
 .page-wrapper:hover {
-    
+    animation-play-state: paused;
 }
 
-.extra1{
+.extra1 {
     /* Move under table to make frame */
     position: fixed;
     bottom: 0;
-    left: 10%;
-    width: 1050px;
+    left: 10.5%;
+    width: 1055px;
     height: 20px;
-    background-color: aqua;
+    background-color: var(--color-board-frame);
 }
-
-
 
 /* Relative Postion */
 
 header abbr {
     position: relative;
     top: -10px;
-    font-size: 2em;
+    font-size: 0.5em;
 }
 
-.intro, .supporting{
+.intro,
+.supporting {
+    display: contents;
 
 }
 
@@ -81,42 +125,43 @@ article {
     position: absolute;
     top: var(--pos-top);
     left: var(--pos-left);
-    /*transform: rotate(var(--tilt,30deg));*/
-    /*
+    /* Rotate at different angle using variable */
+    transform: rotate(var(--tilt, 30deg));
     background-image: var(--img-cardback);
     background-repeat: no-repeat;
-    */
     background-size: cover;
-    width: 300px ;
-    height: 150px;
-    overflow: hidden;
+    width: 120px;
+    height: 160px;
+    overflow: scroll;
+    scrollbar-width: none;
     /* Element Model */
     padding: 5px 10px 20px 8px;
-    border: 2px dotted white; /* change border radius to make card look nice */
-}
-
-article:hover {
-    background-image: var(--img-cardback) ;
-    background-size: cover;
-    background-repeat: repeat;
-}
-
-/* Everything inside the block */
-article > *{
-    opacity: 0;
-    transition: opacity 3s;
+    /* change border radius to make card look nice */
+    border: var(--color-bg-section);
+    border-radius: 10px/20px;
+    transition: all 1s ease;
 }
 
 article:active {
-    background-image: var(--front-color);
+    background-image: var(--img-cardback);
+    background-color: #e97451;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     width: 300px;
-    height: 50vh;
-    transform-origin: 500px 80vh;
+    height: 800px;
+    transform-origin: 500px, 80vh;
     transform: rotateX(-30deg);
 }
 
+/* Everything inside the block */
+article>* {
+    opacity: 1;
+    transition: opacity 5s;
+}
+
+article:active>* {
+    opacity: 1;
+}
 
 /* Hide the elements */
 aside {
@@ -125,72 +170,85 @@ aside {
 
 /* Required: Web Font and Local Font */
 header h1 {
-    font-family: "Playwrite BE WAL Guides", cursive ;
-    font-size: 2em ;
+    font-family: "Libre Caslon Condensed", serif;
+    font-size: 3.5em;
+    font-weight: 350;
 
 }
- @font-face {
+
+@font-face {
     font-family: 'myFont';
-    src: url('../fonts/chunkfive.woff') format('woff'), url(../fonts/chunkfive.svg) format('svg');
+    src: url('../fonts/chunkfive.woff') format('woff'),
+        url(../fonts/chunkfive.svg) format('svg');
     font-weight: normal;
     font-style: italic;
- }
+}
 
- header h2 {
+header h2 {
     font-family: 'myFont', Arial, Helvetica, sans-serif;
-    font-size: 1.5 em ;
- }
+    font-size: 3 em;
+}
 
- a {
+a {
     text-transform: uppercase;
- }
+}
 
- /* Display and Visibility, Sibling Selector */
- /* All p that are siblings of h3 will have text - transform: uppercase */
-h3 + p {
-    display: none;
-    /* visibiity: hidden; */
-    /* opacity: 1; */
- }
+/* Display and Visibility, Sibling Selector */
+h3+p {
+    visibility: visible;
+}
 
 /* Selector Practice*/
-article h3::first-letter{
+article h3::first-letter {
     font-size: 2em;
-} 
-article:first-child{
+}
+
+article:first-child {
     text-shadow: 0.5em 0.1em 1em black;
 }
-p:nth-child(2n){
+
+p:nth-child(2n) {
     background-color: brown;
-    box-shadow: -15px -15px 50px black;
+    box-shadow: -25px -25px 50px black;
 }
-aside ul{
+
+aside ul {
     list-style-image: url("../img/star.png");
 }
 
 /* Style Footer */
 footer {
     position: fixed;
-    top: 0; 
-    left: 0;
-    width: auto;
-    display: flex; /* horizontal */
-    gap: 8px ;
+    top: 20px;
+    left: 15px;
+    width: 100%;
+    display: flex;
+    /* horizontal */
+    gap: 8px;
     padding: 10px;
-    animation: horizontalmove 5s linear infinite;
+    animation: horizontalmove 15s linear infinite;
 
 }
 
 footer a {
-    background-color: var(--color-top-bar);
+    background-color: var(--color-bg-section);
     text-decoration: wavy underline;
 }
 
 @keyframes horizontalmove {
-    0%{transform: translateX(0);}
-    50%{transform: translateX(100%);}
-    100%{transform: translateX(0);}
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
+
 /* Grid Layout Practice
 div{
   background-color:  hsla(200,50%,70%,0.3);
@@ -234,4 +292,3 @@ div{
   grid-row: 3/5;
 }
 */
-
